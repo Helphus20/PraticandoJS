@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        div#area{
+            background: green;
+            color: white;
+            font-size: 16pt;
+            font-family: ENGRAVERS MT;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            position: relative;
+            margin:250px 300px 0px 600px;
+        }
+        h1{
+            font-family: Broadway;
+            font-size: 25pt;
+            color: green;
+            text-shadow: 3px 3px 5px goldenrod;
+            border: 5px solid rgb(161, 132, 70);
+            box-shadow: 0px 2px 3px rgb(97, 70, 21);
+            text-align: center;
+            background-color:rgb(238, 219, 194);
+            padding: 5px 0px 5px 0px;
+            margin: 80px auto -150px auto;
+            width: 700px;
+        }
+        button#quantidade{
+            position: relative;
+            height: 150px;
+            width: 150px;
+            left: 150px;
+            top: -280px;
+            background-color: rgb(238, 238, 238);
+            border: none;
+            font-family: Garamond;
+            font-size: 30pt;
+        }
+        button#cor{ 
+            position: relative;
+            height: 150px;
+            width: 150px;
+            left: 0px;
+            top: -80px;
+            background-color: rgb(238, 238, 238);
+            border: none;
+            font-family: Garamond;
+            font-size: 15pt;
+        }    
+    </style>
+</head>
+<body>
+    <h1>Use o mouse para interagir com o quadrado abaixo!</h1>
+    <div id="area"> <!--onclick="clicar()" onmouseenter="passamouse()" onmousedown="clicando()" onmouseup="descliquei()" onmouseout="mousefora()" ondblclick="doubleclick"
+    
+        Isso seria a parte dos eventos em HTML
+    -->
+        Interaja...
+    </div>
+    <button id="quantidade">
+        <strong>Me clique</strong>
+    </button>
+    <button id="cor">
+        <strong>Clique e mude a cor</strong>
+    </button>
+    <script>
+        var fundo = window.document.getElementById('area')
+        var frase = window.document.getElementById('area')
+        fundo.addEventListener('click', clicar)
+        frase.addEventListener('click', clicar)
+        fundo.addEventListener('mouseenter', passamouse)
+        frase.addEventListener('mouseenter', passamouse)
+        fundo.addEventListener('mousedown', clicando)
+        frase.addEventListener('mousedown', clicando)
+        fundo.addEventListener('mouseup', descliquei)
+        frase.addEventListener('mouseup', descliquei)
+        fundo.addEventListener('mouseout', mousefora)
+        frase.addEventListener('mouseout', mousefora)
+        fundo.addEventListener('ondblclick', doubleclick)
+        frase.addEventListener('ondblclick', doubleclick)
+        
+        function clicar(){
+            fundo.style.background = 'blue'
+        }
+        function passamouse(){ 
+            fundo.style.background = 'cyan'
+            frase.innerHTML ='Entrou'
+        }
+        function clicando(){
+            fundo.style.background = 'orange'
+            frase.innerHTML = 'Segurando...'
+        }
+        function descliquei(){
+            fundo.style.background = 'yellow'
+            frase.innerHTML = 'Soltei'
+        }          
+        function mousefora(){
+            fundo.style.background = 'brown'
+            frase.innerHTML = 'Saiu'   
+        }              
+        function doubleclick(){
+            fundo.style.background = 'white'
+        }    
+        
+        var quant = window.document.getElementById('quantidade')
+        var vezes =  0    
+            quant.addEventListener('click', maisUm)
+        function maisUm(){
+            vezes = vezes + 1
+            quant.innerText = 'Você me clicou '+vezes+' vezes'  
+        }
+
+        var color = window.document.getElementById('cor')
+        var cliques = 0
+            color.addEventListener('click', mudaCor)
+        var dualCor = 0   
+        function mudaCor(){
+            cliques = cliques + 1
+            dualCor = cliques%2 
+        }
+    </script>
+</body>
+</html>
